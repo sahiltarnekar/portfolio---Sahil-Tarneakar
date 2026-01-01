@@ -7,7 +7,7 @@ const Hero = () => {
     <section
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden
-                 bg-gradient-to-br from-slate-50 via-white to-slate-100"
+                 bg-gradient-to-br from-slate-50 via-white to-slate-100 "
     >
       {/* Background Particles */}
       <ParticlesBg />
@@ -30,7 +30,7 @@ const Hero = () => {
         >
           {/* Accent line */}
           <div className="w-16 h-1 rounded-full
-                          bg-gradient-to-r from-cyan-500 to-blue-500" />
+                          bg-gradient-to-r from-cyan-500 to-blue-500 mt-24 md:mt-1"  />
 
           <p className="text-slate-600 text-lg">
             Hello, I’m

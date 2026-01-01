@@ -18,9 +18,9 @@ const projects = [
     live: "https://househunter1108.netlify.app/",
   },
   {
-    title: "Movie Management Admin Panel",
+    title: "Product Management",
     desc:
-      "Admin dashboard built using React and Redux Toolkit featuring full CRUD operations and API integration.",
+      "Developed a responsive data table management web application with search, pagination, and structured data visualization.",
     tech: ["React", "Redux Toolkit", "JSON Server", "Bootstrap"],
     image: "/Product.png",
     github: "#",
@@ -29,7 +29,7 @@ const projects = [
   {
     title: "Recipe Collection Management",
     desc:
-      "Recipe management app with authentication, localStorage support, and modern glassmorphism UI.",
+      "Recipe management app with authentication, localStorage support, and modern glassmorphism UI With search.",
     tech: ["React", "JavaScript", "CSS"],
     image: "/recipe.png",
     github: "#",
@@ -38,7 +38,7 @@ const projects = [
   {
     title: "TechSphere – Electronics Store",
     desc:
-      "Frontend-only responsive website showcasing modern electronics with clean UI and mobile-first design.",
+      "Frontend-only responsive website showcasing modern electronics with clean UI and mobile-first design principles.",
     tech: ["Bootstrap", "HTML", "CSS", "JavaScript"],
     image: "/techsphere.png",
     github: "#",
