@@ -1,16 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
- { name: "About", href: "#about" },
+  { name: "About", href: "#about" },
   { name: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("#home");
+
+  // 🔥 Scroll Spy
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map(link =>
+        document.querySelector(link.href)
+      );
+
+      sections.forEach(section => {
+        if (!section) return;
+
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom >= 120) {
+          setActive(`#${section.id}`);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 w-full z-50
@@ -35,30 +59,36 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <motion.li
-              key={link.name}
-              whileHover="hover"
-              className="relative"
-            >
-              <a
-                href={link.href}
-                className="text-slate-600 hover:text-cyan-600 transition"
-              >
-                {link.name}
-              </a>
+          {navLinks.map((link) => {
+            const isActive = active === link.href;
 
-              {/* Hover underline */}
-              <motion.span
-                variants={{ hover: { width: "100%" } }}
-                initial={{ width: 0 }}
-                className="absolute left-0 -bottom-1 h-[2px]
-                           bg-gradient-to-r from-cyan-500 to-blue-500"
-              />
-            </motion.li>
-          ))}
+            return (
+              <li key={link.name} className="relative">
+                <a
+                  href={link.href}
+                  className={`transition font-medium
+                    ${
+                      isActive
+                        ? "text-cyan-600"
+                        : "text-slate-600 hover:text-cyan-600"
+                    }`}
+                >
+                  {link.name}
+                </a>
 
-          {/* Resume Button */}
+                {/* Active / Hover underline */}
+                <span
+                  className={`absolute left-0 -bottom-1 h-[2px]
+                    bg-gradient-to-r from-cyan-500 to-blue-500 transition-all
+                    ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                />
+              </li>
+            );
+          })}
+
+          {/* Resume */}
           <motion.a
             href="/resume.pdf"
             download
@@ -72,7 +102,7 @@ const Navbar = () => {
           </motion.a>
         </ul>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Button */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden text-slate-800 text-2xl"
@@ -92,20 +122,26 @@ const Navbar = () => {
             className="md:hidden bg-white border-t border-slate-200"
           >
             <ul className="flex flex-col px-6 py-6 gap-4">
-              {navLinks.map((link) => (
-                <motion.li
-                  key={link.name}
-                  whileHover={{ x: 6 }}
-                >
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="text-slate-600 hover:text-cyan-600 transition"
-                  >
-                    {link.name}
-                  </a>
-                </motion.li>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = active === link.href;
+
+                return (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className={`block transition
+                        ${
+                          isActive
+                            ? "text-cyan-600 font-semibold"
+                            : "text-slate-600 hover:text-cyan-600"
+                        }`}
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                );
+              })}
 
               <motion.a
                 href="/resume.pdf"

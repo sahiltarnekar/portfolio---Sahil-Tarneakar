@@ -15,7 +15,6 @@ const Contact = () => {
     setLoading(true);
     toast.loading("Sending message...", { id: "send" });
 
-    // 1️⃣ Send MAIN email (to you)
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAIL_SERVICE_ID,
@@ -24,7 +23,6 @@ const Contact = () => {
         import.meta.env.VITE_EMAIL_PUBLIC_KEY
       )
       .then(() => {
-        // 2️⃣ Send AUTO-REPLY email (to user)
         emailjs.send(
           import.meta.env.VITE_EMAIL_SERVICE_ID,
           import.meta.env.VITE_EMAIL_AUTO_TEMPLATE_ID,
@@ -51,12 +49,13 @@ const Contact = () => {
       id="contact"
       className="relative py-28 px-6 bg-gradient-to-b from-slate-50 to-white overflow-hidden"
     >
-      {/* glow */}
+      {/* Background glow */}
       <div className="absolute top-24 left-24 w-72 h-72 bg-cyan-200/30 blur-3xl rounded-full" />
       <div className="absolute bottom-24 right-24 w-72 h-72 bg-purple-200/30 blur-3xl rounded-full" />
+
       <div className="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-10 gap-16 items-center">
 
-        {/* LEFT */}
+        {/* LEFT – INFO */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -64,19 +63,31 @@ const Contact = () => {
           transition={{ duration: 0.7 }}
           className="md:col-span-6 space-y-8"
         >
-          <h2 className="text-4xl font-extrabold text-slate-900">Contact</h2>
-          <p className="text-slate-600 leading-relaxed">
-        I’m open to internships, full-time roles, and freelance projects.
-        Feel free to reach out anytime.
-      </p>
+          <div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+              Get in Touch
+            </h2>
+            <p className="text-slate-600 max-w-lg">
+              I’m open to internships, entry-level roles, and freelance projects.
+              Feel free to reach out — I usually respond quickly.
+            </p>
+          </div>
 
-          <div className="flex flex-col gap-5">
-            <a href="mailto:sahiltarnekar2@gmail.com" className="flex gap-4 items-center">
+          <div className="flex flex-col gap-5 text-slate-700">
+            <a
+              href="mailto:sahiltarnekar2@gmail.com"
+              className="flex gap-4 items-center hover:text-cyan-600 transition"
+            >
               <FaEnvelope className="text-xl text-cyan-600" />
               sahiltarnekar2@gmail.com
             </a>
 
-            <a href="https://github.com/sahiltarnekar" target="_blank" className="flex gap-4 items-center">
+            <a
+              href="https://github.com/sahiltarnekar"
+              target="_blank"
+              rel="noreferrer"
+              className="flex gap-4 items-center hover:text-slate-900 transition"
+            >
               <FaGithub className="text-xl" />
               github.com/sahiltarnekar
             </a>
@@ -84,10 +95,11 @@ const Contact = () => {
             <a
               href="https://www.linkedin.com/in/sahil-tarnekar-0b2413307/"
               target="_blank"
-              className="flex gap-4 items-center"
+              rel="noreferrer"
+              className="flex gap-4 items-center hover:text-blue-600 transition"
             >
               <FaLinkedin className="text-xl text-blue-600" />
-              LinkedIn
+              LinkedIn Profile
             </a>
           </div>
         </motion.div>
@@ -98,14 +110,19 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="md:col-span-4 bg-white p-6 rounded-2xl shadow-lg"
+          className="md:col-span-4 bg-white p-8 rounded-2xl shadow-xl"
         >
-          <form ref={formRef} onSubmit={sendEmail} className="space-y-4">
+          <form
+            ref={formRef}
+            onSubmit={sendEmail}
+            className="space-y-5"
+            aria-busy={loading}
+          >
             <input
               name="user_name"
               placeholder="Your Name"
               required
-              className="w-full border px-4 py-2 rounded focus:ring-2 focus:ring-cyan-500 outline-none"
+              className="w-full border border-slate-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none"
             />
 
             <input
@@ -113,25 +130,25 @@ const Contact = () => {
               name="user_email"
               placeholder="Your Email"
               required
-              className="w-full border px-4 py-2 rounded focus:ring-2 focus:ring-cyan-500 outline-none"
+              className="w-full border border-slate-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none"
             />
 
             <textarea
               name="message"
               rows="4"
-              placeholder="Your Message"
+              placeholder="Write your message..."
               required
-              className="w-full border px-4 py-2 rounded focus:ring-2 focus:ring-cyan-500 outline-none"
+              className="w-full border border-slate-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-cyan-500 outline-none resize-none"
             />
 
             <button
               type="submit"
               disabled={loading}
-              className={`w-full flex justify-center items-center gap-2 py-2 rounded text-white font-semibold
+              className={`w-full flex justify-center items-center gap-2 py-3 rounded-lg text-white font-semibold transition
                 ${
                   loading
                     ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-gradient-to-r from-cyan-500 to-blue-500 hover:opacity-90"
+                    : "bg-gradient-to-r from-cyan-500 to-blue-500 hover:scale-[1.01]"
                 }`}
             >
               {loading && (
@@ -148,3 +165,4 @@ const Contact = () => {
 };
 
 export default Contact;
+  

@@ -20,7 +20,7 @@ const projects = [
   {
     title: "Product Management",
     desc:
-      "Developed a responsive data table management web application with search, pagination, and structured data visualization.",
+      "Responsive data table management application with search, pagination, and structured data visualization.",
     tech: ["React", "Redux Toolkit", "JSON Server", "Bootstrap"],
     image: "/Product.png",
     github: "#",
@@ -29,7 +29,7 @@ const projects = [
   {
     title: "Recipe Collection Management",
     desc:
-      "Recipe management app with authentication, localStorage support, and modern glassmorphism UI With search.",
+      "Recipe management app with authentication, localStorage support, search functionality, and modern UI design.",
     tech: ["React", "JavaScript", "CSS"],
     image: "/recipe.png",
     github: "#",
@@ -38,8 +38,8 @@ const projects = [
   {
     title: "TechSphere – Electronics Store",
     desc:
-      "Frontend-only responsive website showcasing modern electronics with clean UI and mobile-first design principles.",
-    tech: ["Bootstrap", "HTML", "CSS", "JavaScript"],
+      "Frontend-only responsive website showcasing modern electronics with a clean UI and mobile-first design.",
+    tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     image: "/techsphere.png",
     github: "#",
     live: "https://techsphere-sahil.netlify.app/",
@@ -50,7 +50,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="py-15 px-6 bg-gradient-to-b from-white to-slate-50"
+      className="py-20 px-6 bg-gradient-to-b from-white to-slate-50"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -65,7 +65,7 @@ const Projects = () => {
             Projects
           </h2>
           <p className="text-slate-500 text-lg">
-            Selected projects demonstrating my development skills
+            Selected projects showcasing my frontend development skills
           </p>
         </motion.div>
 
@@ -93,36 +93,42 @@ const Projects = () => {
   );
 };
 
-/* PROJECT CARD – SAME HEIGHT */
+/* ================= PROJECT CARD ================= */
 const ProjectCard = ({ project }) => {
   return (
     <motion.div
       whileHover={{ y: -6 }}
-      className="flex flex-col h-full min-h-[400px]
+      className="flex flex-col h-full min-h-[380px]
                  bg-white rounded-2xl overflow-hidden
-                 shadow-md hover:shadow-2xl transition"
+                 shadow-md hover:shadow-xl transition"
     >
       {/* Image */}
-      <div className="relative h-48 shrink-0">
+      <div className="relative h-48">
         <img
           src={project.image}
           alt={project.title}
           className="w-full h-full object-cover"
         />
 
-        {/* Overlay */}
+        {/* Hover Overlay */}
         <div className="absolute inset-0 bg-slate-900/70
                         opacity-0 hover:opacity-100 transition
                         flex items-center justify-center gap-4">
           <a
             href={project.github}
-            className="p-3 rounded-full bg-white text-slate-900 hover:scale-110 transition"
+            target="_blank"
+            rel="noreferrer"
+            className="p-3 rounded-full bg-white text-slate-900
+                       hover:scale-110 transition"
           >
             <FaGithub />
           </a>
           <a
             href={project.live}
-            className="p-3 rounded-full bg-white text-slate-900 hover:scale-110 transition"
+            target="_blank"
+            rel="noreferrer"
+            className="p-3 rounded-full bg-white text-slate-900
+                       hover:scale-110 transition"
           >
             <FaExternalLinkAlt />
           </a>
@@ -135,34 +141,22 @@ const ProjectCard = ({ project }) => {
           {project.title}
         </h3>
 
-        {/* CLAMPED TEXT */}
         <p className="text-slate-500 text-sm mb-4 line-clamp-4">
           {project.desc}
         </p>
 
-        {/* Tech */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((t, i) => (
+        {/* Tech Stack */}
+        <div className="mt-auto flex flex-wrap gap-2">
+          {project.tech.map((tech, i) => (
             <span
               key={i}
               className="text-xs px-3 py-1 rounded-full
                          bg-slate-100 text-slate-600"
             >
-              {t}
+              {tech}
             </span>
           ))}
         </div>
-
-        {/* Button pinned bottom */}
-        <a
-          href={project.live}
-          className="mt-auto text-center
-                     text-sm font-semibold px-4 py-2 rounded-lg
-                     bg-gradient-to-r from-cyan-500 to-blue-500
-                     text-white hover:scale-105 transition"
-        >
-          View Project
-        </a>
       </div>
     </motion.div>
   );

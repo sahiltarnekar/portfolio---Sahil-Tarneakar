@@ -19,33 +19,51 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="order-1 text-left"
+          className="order-1 text-left md:pl-12 md:max-w-xl"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 ">
             About Me
           </h2>
           <div className="w-20 h-1 mb-6 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500" />
 
-          <p className="text-slate-600 leading-relaxed mb-4">
-            I am a passionate{" "}
-            <span className="font-medium text-slate-800">
-              Frontend Developer
-            </span>{" "}
-            and an{" "}
-            <span className="font-medium text-slate-800">
-              M.Sc. (IT) Integrated student
-            </span>{" "}
-            at{" "}
-            <span className="font-medium text-slate-800">
-              Gandhinagar University, Ahmedabad
-            </span>.
-          </p>
+<p className="text-slate-600 leading-relaxed mb-4">
+  I am a motivated{" "}
+  <span className="font-medium text-slate-800">
+    Frontend Developer (Fresher)
+  </span>{" "}
+  and an{" "}
+  <span className="font-medium text-slate-800">
+    M.Sc. (IT) Integrated student
+  </span>{" "}
+  at{" "}
+  <span className="font-medium text-slate-800">
+    Gandhinagar University, Ahmedabad
+  </span>.
+  I am passionate about learning and building modern, responsive web
+  interfaces.
+</p>
 
-          <p className="text-slate-600 leading-relaxed">
-            I specialize in building responsive, user-friendly interfaces using
-            HTML, CSS, JavaScript, Bootstrap, Tailwind CSS, React, and modern UI
-            practices.
-          </p>
+<p className="text-slate-600 leading-relaxed mb-4">
+  I have learned and practiced frontend technologies including{" "}
+  <span className="font-medium text-slate-800">
+    HTML, CSS, Tailwind CSS, Bootstrap, jQuery, and React.js
+  </span>
+  . I enjoy creating clean layouts, responsive designs, and user-friendly
+  interfaces that work smoothly across different screen sizes.
+</p>
+
+<p className="text-slate-600 leading-relaxed mb-4">
+  Along with frontend development, I am currently learning backend
+  technologies such as{" "}
+  <span className="font-medium text-slate-800">
+    Node.js, Express.js, and MongoDB
+  </span>
+  . I am building a basic understanding of server-side development, REST
+  APIs, and database operations.
+</p>
+
+
+
         </motion.div>
 
         {/* ================= IMAGE (ABOUT) ================= */}
