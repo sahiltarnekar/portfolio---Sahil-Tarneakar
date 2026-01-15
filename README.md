@@ -1,16 +1,76 @@
-# React + Vite
+# Sahil Tarnekar – Frontend Developer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website built to showcase my skills, projects, and background as a **Frontend Developer**.  
+Currently open to **internship and entry-level job opportunities**.
 
-Currently, two official plugins are available:
+🔗 **Live Website:**  
+https://stportfolio.netlify.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📸 Website Preview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+![Website Preview](public/website.png)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 👨‍💻 About Me
+
+I am a motivated **Frontend Developer (Fresher)** and an **M.Sc. (IT) Integrated student** at Gandhinagar University, Ahmedabad.  
+I enjoy building clean, responsive, and user-friendly web interfaces.
+
+Along with frontend development, I am currently learning backend technologies such as **Node.js, Express.js, and MongoDB**, and building a strong foundation in REST APIs and server-side logic.
+
+---
+
+## 🛠️ Skills & Technologies
+
+- **Frontend:** HTML5, CSS3, Tailwind CSS, Bootstrap, JavaScript, React.js  
+- **Tools:** Git, GitHub  
+- **Backend (Learning):** Node.js, Express.js, MongoDB  
+
+---
+
+## 📂 Projects
+
+The portfolio includes multiple frontend projects such as:
+- Real estate web applications
+- Data table management apps
+- Recipe management systems
+- Responsive e-commerce UI websites
+
+Each project includes:
+- Live demo links  
+- Tech stack used  
+- Clean and responsive UI  
+
+---
+
+## 📬 Contact
+
+I am actively looking for **internship and entry-level opportunities**.
+
+You can reach me via:
+- **Email:** sahiltarnekar2@gmail.com  
+- **GitHub:** https://github.com/sahiltarnekar  
+- **LinkedIn:** https://www.linkedin.com/in/sahil-tarnekar-0b2413307/
+
+The contact form on the website is fully functional using **EmailJS**, with automatic confirmation replies.
+
+---
+
+## 🚀 Features
+
+- Fully responsive design  
+- Modern dark UI  
+- Smooth animations with Framer Motion  
+- EmailJS-powered contact form  
+- Clean and consistent layout  
+
+---
+
+## 📌 Note
+
+This portfolio is continuously evolving as I learn and build more real-world projects.
+
+Thank you for visiting! 🙂
