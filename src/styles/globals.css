@@ -1,0 +1,16 @@
+/* Swiper pagination position fix */
+.swiper-pagination {
+  bottom: -6px !important;
+}
+
+.swiper-pagination-bullet {
+  background: #6b7280; /* gray-400 */
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #22d3ee; /* cyan-400 */
+}
+nav a.active {
+  color: #22d3ee;
+}

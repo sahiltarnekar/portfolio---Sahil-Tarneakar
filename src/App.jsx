@@ -1,26 +1,26 @@
-import React from "react"
-import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import Skills from "./components/Skills"
-import Projects from "./components/Projects"
-import About from "./components/About"
-import Contact from "./components/Contact"
-import Footer from "./components/Footer"
-import { Toaster } from "react-hot-toast"
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
-function App() {
+import Hero from "./sections/Hero";
+import Skills from "./sections/Skills";
+import Projects from "./sections/Projects";
+import About from "./sections/About";
+import Contact from "./sections/Contact";
+
+const App = () => {
   return (
     <>
-      <Toaster position="top-right" reverseOrder={false} />
-        <Navbar />
+      <Navbar />
+      <main>
         <Hero />
-        <Skills/>
+        <Skills />
         <Projects />
         <About />
-         <Contact />
-        <Footer /> 
+        <Contact />
+      </main>
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
