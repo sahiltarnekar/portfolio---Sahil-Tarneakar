@@ -30,7 +30,7 @@ const Hero = () => {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="text-4xl md:text-7xl font-extrabold text-slate-900 leading-tight mb-6"
+              className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6"
             >
               Hi, I’m <span className="bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent">Sahil Tarnekar</span>
             </motion.h1>

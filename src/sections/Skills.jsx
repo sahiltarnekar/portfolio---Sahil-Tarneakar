@@ -106,7 +106,7 @@ const SkillRow = ({ title, children }) => {
       viewport={{ once: true }}
       className="grid grid-cols-1 md:grid-cols-12 gap-6 border-b border-slate-200 pb-8"
     >
-      <h3 className="md:col-span-3 text-lg font-bold text-slate-800 uppercase tracking-tight">
+      <h3 className="md:col-span-3 text-lg font-bold text-slate-900 ">
         {title}
       </h3>
 
