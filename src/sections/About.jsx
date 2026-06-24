@@ -1,113 +1,56 @@
 import { motion } from "framer-motion";
 import Container from "../components/common/Container";
 import SectionHeader from "../components/ui/SectionHeader";
-import { fadeUp } from "../animations/fadeUp";
+import { FaArrowRight } from "react-icons/fa";
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-[#f8fafc]">
+    <section id="about" className="py-12 md:py-20 bg-bg-base">
       <Container>
-        <SectionHeader
-          title="About Me"
-          subtitle="Background, education, and what I’m currently working towards"
-        />
+        <SectionHeader title="About" />
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start mt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center mt-16 md:mt-24">
           
-          {/* ABOUT TEXT */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
+          {/* LEFT: Abstract Visual (Gradient Box + Slash) */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-7 max-w-[620px] text-slate-600 space-y-6"
+            transition={{ duration: 0.6 }}
+            className="hidden lg:flex lg:col-span-5 relative h-full min-h-[250px] md:min-h-[350px] w-full"
           >
-            <p className="text-lg leading-relaxed">
-              I am a motivated{" "}
-              <span className="text-red-600 font-bold">
-                Frontend Developer
-              </span>{" "}
-              and an{" "}
-              <span className="text-red-600 font-bold">
-                M.Sc. (IT) Integrated student
-              </span>{" "}
-              at{" "}
-              <span className="text-orange-600 font-semibold">
-                Gandhinagar University, Ahmedabad
-              </span>.
-              I enjoy building modern, responsive, and user-friendly web interfaces.
-            </p>
-
-            <p>
-              I have hands-on experience with frontend technologies such as{" "}
-              <span className="text-slate-900 font-medium px-2 py-0.5 bg-orange-50 rounded border border-orange-100">
-                HTML, CSS, Tailwind CSS, Bootstrap, jQuery, and React.js
-              </span>. 
-              My focus is on clean UI, responsiveness, and consistent user experience across devices.
-            </p>
-
-            <div className="p-6 bg-slate-50 rounded-2xl border-l-4 border-red-500 shadow-sm">
-              <p className="italic">
-                "Along with frontend development, I am currently learning backend
-                technologies including{" "}
-                <span className="text-red-600 font-bold">
-                  Node.js, Express.js, and MongoDB
-                </span>. 
-                I am building a strong foundation in REST APIs and database handling."
-              </p>
-            </div>
-
-            <p>
-              I am actively looking for{" "}
-              <span className="text-red-600 font-bold hover:underline cursor-default">
-                internship and entry-level opportunities
-              </span>{" "}
-              where I can apply my skills, gain real-world experience, and grow
-              as a full-stack developer.
-            </p>
+            {/* The Gradient Box */}
+            <div className="w-56 h-56 md:w-72 md:h-72 bg-gradient-to-br from-blue-400 to-accent z-10 relative shadow-2xl shadow-accent/10"></div>
+            
+            {/* The Diagonal Slash (Dark angled pillar to the right) */}
+            <div className="absolute left-[260px] md:left-[360px] top-0 h-56 w-8 md:h-72 md:w-12 bg-bg-surface transform skew-x-[-15deg] z-0"></div>
           </motion.div>
 
-          {/* EDUCATION TIMELINE */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
+          {/* RIGHT: Text Content */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-5 border-l-2 border-slate-100 pl-8 relative"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-7 flex flex-col justify-center text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl lg:pl-8"
           >
-            <h3 className="text-xl font-bold text-slate-900 mb-10 flex items-center gap-2">
-              <span className="w-8 h-[2px] bg-red-500 inline-block"></span>
-              Education & Training
-            </h3>
+            <p className="mb-6">
+              <span className="text-text-primary font-semibold">M.Sc. (IT) Integrated student</span> at Gandhinagar University and a <span className="text-text-primary font-semibold">Full Stack Developer</span> passionate about building scalable web applications.
+            </p>
+            <p className="mb-6">
+              Skilled in <span className="text-accent font-medium">React.js, Node.js, Express.js, MongoDB, JavaScript, Tailwind CSS, and Bootstrap</span>. Built projects like <span className="text-text-primary font-semibold">ParcelOS</span> and <span className="text-text-primary font-semibold">EpicAura</span> with a focus on performance, responsiveness, and user experience.
+            </p>
+            <p className="mb-10">
+              Currently enhancing my problem-solving abilities through <span className="text-accent font-medium">Data Structures and Algorithms (DSA)</span> while exploring advanced software development concepts.
+            </p>
 
-            <div className="space-y-12">
-              {/* EDUCATION ITEM */}
-              <div className="relative group">
-                <span className="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-red-500 rounded-full transition-transform group-hover:scale-125" />
-                <h4 className="text-slate-900 font-bold group-hover:text-red-600 transition-colors">
-                  Master of Science in IT (M.Sc. IT)
-                </h4>
-                <p className="text-xs font-black uppercase tracking-widest text-orange-500 mt-1">
-                  2023 – Present · Gandhinagar University
-                </p>
-                <p className="text-slate-500 text-sm mt-3 leading-relaxed">
-                  Focused on programming, databases, and modern web technologies with hands-on projects.
-                </p>
-              </div>
-
-              {/* TRAINING ITEM */}
-              <div className="relative group">
-                <span className="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-orange-500 rounded-full transition-transform group-hover:scale-125" />
-                <h4 className="text-slate-900 font-bold group-hover:text-orange-600 transition-colors">
-                  Full Stack Developer Training
-                </h4>
-                <p className="text-xs font-black uppercase tracking-widest text-orange-500 mt-1">
-                  Feb 2025 – Present · Red & White Multimedia
-                </p>
-                <p className="text-slate-500 text-sm mt-3 leading-relaxed">
-                  Intensive training in React.js, Tailwind, JavaScript, and Git/GitHub through real-world builds.
-                </p>
-              </div>
+            <div>
+              <a 
+                href="#projects" 
+                className="inline-flex items-center gap-2 text-accent font-semibold hover:opacity-80 transition-opacity"
+              >
+                More about me <FaArrowRight className="text-sm" />
+              </a>
             </div>
           </motion.div>
 

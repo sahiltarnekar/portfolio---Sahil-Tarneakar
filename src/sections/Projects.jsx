@@ -1,159 +1,102 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 import Container from "../components/common/Container";
 import SectionHeader from "../components/ui/SectionHeader";
-import { fadeUp } from "../animations/fadeUp";
-
-import "swiper/css";
-import "swiper/css/pagination";
-
-const projects = [
-  {
-    title: "HouseHunter",
-    desc: "Single-page real estate application with dynamic routing, property and agent detail pages, and a conversion-focused UI.",
-    tech: ["React", "Bootstrap", "JavaScript"],
-    image: "/househunter.png",
-    github: "#",
-    live: "https://househunter1108.netlify.app/",
-  },
-  {
-    title: "Product Management",
-    desc: "Responsive data table management application with search, pagination, and structured data visualization.",
-    tech: ["React", "JSON Server", "Bootstrap"],
-    image: "/Product.png",
-    github: "#",
-    live: "https://datatablels.netlify.app/",
-  },
-  {
-    title: "Recipe Collection",
-    desc: "Recipe management app with authentication, localStorage support, search functionality, and modern UI design.",
-    tech: ["React", "JavaScript", "CSS"],
-    image: "/recipe.png",
-    github: "#",
-    live: "https://recipebook1108.netlify.app/",
-  },
-  {
-    title: "TechSphere Electronics",
-    desc: "Frontend-only responsive website showcasing modern electronics with a clean UI and mobile-first design.",
-    tech: ["HTML", "CSS", "JS", "Bootstrap"],
-    image: "/techsphere.png",
-    github: "#",
-    live: "https://techsphere-sahil.netlify.app/",
-  },
-];
+import { FaArrowRight } from "react-icons/fa";
+import { projects } from "../data/projects";
 
 const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
-    <section id="projects" className="py-24 bg-white"> 
+    <section id="projects" className="py-12 md:py-20 bg-bg-base">
       <Container>
-        <SectionHeader
-          title="Featured Projects"
-          subtitle="A collection of my recent work building interactive web experiences."
+        <SectionHeader 
+          title="Projects" 
+          subtitle="A selection of my recent full-stack applications and frontend development work."
         />
 
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="mt-12"
-        >
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            slidesPerView={1}
-            spaceBetween={30}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            pagination={{ 
-                clickable: true,
-                bulletClass: 'swiper-pagination-bullet !bg-red-500', 
-            }}
-            breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-            className="pb-20 !px-2"
-          >
-            {projects.map((project, index) => (
-              <SwiperSlide key={index} className="h-full">
-                <ProjectCard project={project} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </motion.div>
+        <div className="mt-8 flex flex-col">
+          {displayedProjects.map((project, index) => {
+            const displayIndex = (index + 1).toString().padStart(2, "0");
+
+            return (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 py-6 md:py-8 group items-center"
+              >
+                
+                {/* LEFT: Content */}
+                <div className="lg:col-span-8 flex flex-col justify-center order-2 lg:order-1 h-full py-2">
+                  
+                  <div className="flex items-start gap-4 md:gap-6 w-full">
+                    <span className="text-2xl md:text-3xl font-display text-accent mt-0.5">
+                      {displayIndex}
+                    </span>
+
+                    <div className="flex flex-col flex-1">
+                      <h3 className="text-xl md:text-2xl font-bold text-text-primary mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-text-secondary text-sm md:text-base mb-4 md:mb-6 leading-relaxed">
+                        {project.desc}
+                      </p>
+                      
+                      {/* Tech Stack and View Project Row */}
+                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mt-auto">
+                        <p className="text-accent text-xs md:text-sm font-medium">
+                          {project.tech.join(" / ")}
+                        </p>
+                        
+                        <Link 
+                          to={`/project/${project.id}`}
+                          className="inline-flex items-center gap-2 text-accent font-semibold hover:opacity-80 transition-opacity text-sm whitespace-nowrap shrink-0"
+                        >
+                          View Project <FaArrowRight className="text-[10px]" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* RIGHT: Image */}
+                <div className="lg:col-span-4 order-1 lg:order-2 w-full flex justify-end items-center">
+                  <Link 
+                    to={`/project/${project.id}`}
+                    className="block w-full aspect-video rounded-2xl overflow-hidden border border-border relative group bg-bg-surface/40"
+                  >
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover object-top opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" 
+                    />
+                  </Link>
+                </div>
+
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {projects.length > 3 && (
+          <div className="mt-12 flex justify-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="px-8 py-3 bg-transparent border border-accent text-accent rounded hover:bg-accent/10 transition-colors font-bold text-sm tracking-wide"
+            >
+              {showAll ? "View Less Projects" : "View More Projects"}
+            </button>
+          </div>
+        )}
       </Container>
     </section>
-  );
-};
-
-/* ================= PROJECT CARD ================= */
-
-const ProjectCard = ({ project }) => {
-  return (
-    <div className="group flex flex-col h-full bg-white border border-slate-100 shadow-sm rounded-3xl overflow-hidden transition-all duration-300">
-      
-      {/* IMAGE CONTAINER - The 'group' is here so hover only happens on image */}
-      <div className="relative h-56 overflow-hidden group/image">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110"
-        />
-
-        {/* RED-ORANGE OVERLAY */}
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-red-600/80 to-orange-500/30 
-          opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 
-          flex items-center justify-center gap-6"
-        >
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            className="p-4 rounded-full bg-white text-red-600 hover:scale-110 transition shadow-lg"
-          >
-            <FaGithub size={20} />
-          </a>
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noreferrer"
-            className="p-4 rounded-full bg-white text-orange-600 hover:scale-110 transition shadow-lg"
-          >
-            <FaExternalLinkAlt size={18} />
-          </a>
-        </div>
-      </div>
-
-      {/* CONTENT AREA */}
-      <div className="flex flex-col flex-1 p-8">
-        {/* Title turns Orange instantly when Image Container is hovered */}
-        <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover/image:text-orange-600 
-       transition-colors">
-          {project.title}
-        </h3>
-
-        <p className="text-slate-600 text-sm mb-6 leading-relaxed line-clamp-3">
-          {project.desc}
-        </p>
-
-        {/* TECH STACK - Badges turn Red instantly when Image Container is hovered */}
-        <div className="mt-auto flex flex-wrap gap-2">
-          {project.tech.map((tech, i) => (
-            <span
-              key={i}
-              className="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 text-orange-600
-              rounded-lg bg-slate-50 border border-slate-100 text-slate-500 
-              group-hover/image:text-red-600 group-hover/image:border-red-100 group-hover/image:bg-red-50"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 };
 

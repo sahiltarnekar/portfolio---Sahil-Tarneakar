@@ -1,99 +1,106 @@
 @import "tailwindcss";
 
-/* 1. Design Tokens: Modernized Red-Orange Palette */
 :root {
-  --font-body: 'Inter', sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
-  
-  /* Primary Flame Colors */
-  --brand-red: #ef4444;    /* red-600 */
-  --brand-orange: #f97316; /* orange-500 */
-  --brand-light: #fff5f5;  /* soft red-50 */
-  
-  /* Slate Tones for Contrast */
-  --slate-dark: #0f172a;   /* slate-900 */
-  --slate-mid: #64748b;    /* slate-500 */
+  /* LIGHT MODE */
+  --theme-bg-base: #f8fafc;
+  --theme-bg-surface: #ffffff;
+  --theme-surface-hover: #f1f5f9;
+  --theme-accent: #06b6d4;
+  --theme-border: #e2e8f0;
+  --theme-text-primary: #0f172a;
+  --theme-text-secondary: #475569;
 }
 
-/* 2. Core Styles */
+[data-theme="dark"] {
+  /* DARK MODE */
+  --theme-bg-base: #020617;
+  --theme-bg-surface: #0f172a;
+  --theme-surface-hover: #1e293b;
+  --theme-accent: #06b6d4;
+  --theme-border: #334155;
+  --theme-text-primary: #f8fafc;
+  --theme-text-secondary: #94a3b8;
+}
+
+@theme {
+  --color-bg-base: var(--theme-bg-base);
+  --color-bg-surface: var(--theme-bg-surface);
+  --color-surface-hover: var(--theme-surface-hover);
+  
+  --color-accent: var(--theme-accent);
+  
+  --color-border: var(--theme-border);
+  
+  --color-text-primary: var(--theme-text-primary);
+  --color-text-secondary: var(--theme-text-secondary);
+  
+  --font-body: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+/* 1. Core Base Styles */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+  scroll-padding-top: 100px;
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: #fcfdfd; /* Extremely subtle blue-tinted white for red pop */
-  color: var(--slate-dark);
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  letter-spacing: -0.03em;
-  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
 }
 
-/* 3. High-End Gradient Scrollbar */
+p, span, div, a {
+  font-family: var(--font-body);
+}
+
+/* 2. Minimalist Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--color-bg-base);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, var(--brand-red), var(--brand-orange));
-  border-radius: 100px;
+  background: var(--color-border);
+  border-radius: 4px;
 }
 
-/* 4. Custom Text Selection (Matches theme) */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* 3. Text Selection */
 ::selection {
-  background-color: var(--brand-red);
-  color: white;
+  background-color: var(--color-accent);
+  color: #030712;
 }
 
-/* 5. Enhanced "Floating" Animation with Red Glow */
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0) rotate(0); 
-    filter: drop-shadow(0 10px 15px rgba(239, 68, 68, 0.1));
-  }
-  50% { 
-    transform: translateY(-20px) rotate(1.5deg); 
-    filter: drop-shadow(0 25px 25px rgba(249, 115, 22, 0.2));
-  }
+/* 4. Global Button & Card Foundations (for future use) */
+.btn-primary {
+  @apply bg-accent text-[#030712] font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-200;
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+.btn-secondary {
+  @apply bg-transparent border border-border text-text-primary font-semibold px-6 py-3 rounded-lg hover:bg-surface-hover transition-all duration-200;
 }
 
-/* 6. Heat-Wave Grid Pattern */
-.bg-grid {
-  background-size: 50px 50px;
-  background-image: 
-    linear-gradient(to right, #fee2e2 1px, transparent 1px),
-    linear-gradient(to bottom, #fee2e2 1px, transparent 1px);
-  mask-image: radial-gradient(circle at 50% 0%, black 20%, transparent 85%);
-  opacity: 0.5;
-  pointer-events: none;
+.card-minimal {
+  @apply bg-bg-surface border border-border rounded-xl transition-all duration-200 hover:bg-surface-hover;
 }
 
-/* 7. Utility: Red-Orange Text Gradient */
-.text-gradient-flame {
-  @apply bg-gradient-to-r from-red-600 to-orange-500 bg-clip-text text-transparent;
-}
-
-/* 8. Utility: Flame Button Glow */
-.btn-fire-glow {
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px -3px rgba(239, 68, 68, 0.4);
-}
-
-.btn-fire-glow:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(249, 115, 22, 0.5);
+/* 5. Utility: Marquee Edge Fade (Kept because it fits minimal tech SaaS look without neon) */
+.mask-image-fade {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }

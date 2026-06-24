@@ -22,14 +22,54 @@ const ParticlesBg = () => {
             options={{
                 background: { color: "transparent" },
                 fpsLimit: 120,
-                particles: {
-                    color: { value: "#64748b" },
-                    links: { enable: true, color: "#cbd5e1", opacity: 0.2 },
-                    move: { enable: true, speed: 0.6 },
-                    number: { value: 35 },
-                    opacity: { value: 0.4 },
-                    size: { value: 2 },
+                interactivity: {
+                    events: {
+                        onHover: {
+                            enable: true,
+                            mode: "bubble",
+                        },
+                    },
+                    modes: {
+                        bubble: {
+                            distance: 250,
+                            size: 6,
+                            duration: 2,
+                            opacity: 0.8,
+                        },
+                    },
                 },
+                particles: {
+                    color: { value: ["#06b6d4", "#a855f7", "#ffffff"] },
+                    links: {
+                        enable: false,
+                    },
+                    move: {
+                        direction: "none",
+                        enable: true,
+                        outModes: {
+                            default: "out",
+                        },
+                        random: true,
+                        speed: 0.5,
+                        straight: false,
+                    },
+                    number: {
+                        density: {
+                            enable: true,
+                        },
+                        value: 40,
+                    },
+                    opacity: {
+                        value: { min: 0.1, max: 0.5 },
+                    },
+                    shape: {
+                        type: "circle",
+                    },
+                    size: {
+                        value: { min: 1, max: 4 },
+                    },
+                },
+                detectRetina: true,
             }}
         />
     );
